@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mousom Roy — Materials Scientist & Systems Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e0e;
+    --ink2: #3a3a3a;
+    --ink3: #7a7870;
+    --surface: #f7f4ef;
+    --surface2: #ede9e1;
+    --surface3: #e3ddd3;
+    --accent: #1a4a3c;
+    --accent2: #2d7a5c;
+    --accent-light: #d4ede4;
+    --amber: #8a5c0a;
+    --amber-light: #f5e6c8;
+    --blue: #0d3d6b;
+    --blue-light: #d6e9f5;
+    --coral: #7a2a1a;
+    --coral-light: #f5ddd9;
+    --border: rgba(14,14,14,0.1);
+    --border2: rgba(14,14,14,0.06);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Outfit', system-ui, sans-serif;
+    --r: 0.75rem;
+    --r2: 1.25rem;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(247,244,239,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent2); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 2rem;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent2) !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at center, rgba(45,122,92,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--accent2);
+    background: var(--accent-light);
+    padding: 0.3rem 0.85rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--accent-light);
+    padding-left: 1rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink2);
+    padding: 0.75rem 1.75rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  /* ── HERO VISUAL ── */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .crystal-container {
+    width: 340px;
+    height: 340px;
+    position: relative;
+  }
+
+  .crystal-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+    animation: rotate linear infinite;
+  }
+
+  .crystal-ring:nth-child(1) {
+    inset: 0;
+    border-color: rgba(45,122,92,0.2);
+    animation-duration: 20s;
+  }
+  .crystal-ring:nth-child(2) {
+    inset: 30px;
+    border-color: rgba(45,122,92,0.15);
+    border-style: dashed;
+    animation-duration: 15s;
+    animation-direction: reverse;
+  }
+  .crystal-ring:nth-child(3) {
+    inset: 60px;
+    border-color: rgba(45,122,92,0.1);
+    animation-duration: 25s;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .crystal-center {
+    position: absolute;
+    inset: 80px;
+    background: linear-gradient(135deg, var(--accent-light), var(--surface2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(45,122,92,0.2);
+  }
+
+  .crystal-symbol {
+    font-family: var(--serif);
+    font-size: 3rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-stat {
+    position: absolute;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
+  .hero-stat-label { font-family: var(--mono); font-size: 0.7rem; color: var(--ink3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.15rem; }
+  .hero-stat-value { font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+
+  .stat-1 { top: 20px; right: -10px; }
+  .stat-2 { bottom: 60px; left: -20px; }
+  .stat-3 { top: 120px; right: -40px; }
+
+  /* ── SECTION BASICS ── */
+  section { padding: 5rem 3rem; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--ink2);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-left { position: sticky; top: 6rem; }
+
+  .avatar-block {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-light), var(--surface2));
+    border: 2px solid rgba(45,122,92,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .avatar-initials {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .about-meta { display: flex; flex-direction: column; gap: 0.6rem; }
+  .about-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--ink2);
+  }
+  .about-meta-dot {
+    width: 6px; height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .about-body { font-size: 1rem; color: var(--ink2); line-height: 1.8; }
+  .about-body p + p { margin-top: 1.2rem; }
+
+  .highlight-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent2);
+    border-radius: 0 var(--r) var(--r) 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+    color: var(--accent);
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .about-discoveries {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .discovery-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--ink2);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .discovery-icon { color: var(--accent2); font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--surface2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 1.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+
+  .skill-card-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .icon-green { background: var(--accent-light); }
+  .icon-amber { background: var(--amber-light); }
+  .icon-blue { background: var(--blue-light); }
+  .icon-coral { background: var(--coral-light); }
+
+  .skill-card-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.75rem;
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border);
+    color: var(--ink2);
+    background: var(--surface2);
+    white-space: nowrap;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); border-color: rgba(45,122,92,0.3); }
+
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+
+  .project-lang {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent2);
+    background: var(--accent-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .project-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    font-family: var(--mono);
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--ink2);
+    line-height: 1.65;
+  }
+
+  .project-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    font-size: 0.8rem;
+    color: var(--ink3);
+  }
+
+  .star-count { display: flex; align-items: center; gap: 0.3rem; }
+
+  /* ── RESEARCH ── */
+  .research-section { background: var(--ink); color: #fff; }
+  .research-section .section-label { color: var(--accent-light); }
+  .research-section .section-title { color: #fff; }
+  .research-section .section-subtitle { color: rgba(255,255,255,0.55); }
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .research-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--r2);
+    padding: 1.75rem;
+    transition: background 0.2s;
+  }
+  .research-card:hover { background: rgba(255,255,255,0.07); }
+
+  .research-card-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .research-card-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .research-card-body {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  .research-tag {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--accent-light);
+    background: rgba(45,122,92,0.18);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent2); background: var(--accent-light); }
+
+  .contact-link-icon {
+    width: 38px; height: 38px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-label { font-size: 0.75rem; color: var(--ink3); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-link-value { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+
+  .contact-note {
+    background: var(--accent-light);
+    border-radius: var(--r2);
+    padding: 2rem;
+  }
+
+  .contact-note-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+
+  .contact-note-body { font-size: 0.9rem; color: var(--ink2); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--ink3);
+  }
+
+  .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--ink2); }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 0 3rem; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; text-align: center; }
+    .hero-tagline { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { display: none; }
+
+    section { padding: 3.5rem 1.5rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-left { position: static; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .about-meta { align-items: center; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+    .hero-stat { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    nav { padding: 0.85rem 1.25rem; }
+    .hero-name { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MR.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-eyebrow">PhD Researcher · Jadavpur University</div>
+    <h1 class="hero-name">Mousom<br /><em>Roy</em></h1>
+    <p class="hero-tagline">
+      Materials scientist bridging nanoscience & computation — synthesizing defect-engineered materials, building open-source characterisation tools, and automating everything in between.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects ↓</a>
+      <a href="https://github.com/raymsm" class="btn-ghost" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="crystal-container">
+      <div class="crystal-ring"></div>
+      <div class="crystal-ring"></div>
+      <div class="crystal-ring"></div>
+      <div class="crystal-center">
+        <div class="crystal-symbol">TiO₂</div>
+      </div>
+    </div>
+
+    <div class="hero-stat stat-1">
+      <div class="hero-stat-label">Focus Area</div>
+      <div class="hero-stat-value">Black Titania</div>
+    </div>
+    <div class="hero-stat stat-2">
+      <div class="hero-stat-label">Repos</div>
+      <div class="hero-stat-value">14 Public</div>
+    </div>
+    <div class="hero-stat stat-3">
+      <div class="hero-stat-label">Domain</div>
+      <div class="hero-stat-value">Nano + IoT</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-left fade-up">
+      <div class="avatar-block">
+        <span class="avatar-initials">MR</span>
+      </div>
+      <div class="about-meta">
+        <div class="about-meta-item"><span class="about-meta-dot"></span> Kolkata, India</div>
+        <div class="about-meta-item"><span class="about-meta-dot"></span> MTech · Nanoscience & Technology</div>
+        <div class="about-meta-item"><span class="about-meta-dot"></span> BTech · Civil Engineering</div>
+        <div class="about-meta-item"><span class="about-meta-dot"></span> AICTE Doctoral Fellow</div>
+      </div>
+    </div>
+
+    <div class="about-body fade-up">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Scientist &<br />Systems Builder</h2>
+
+      <p>I sit at the intersection of materials chemistry and computational engineering. My doctoral work explores defect-engineered titania — particularly black TiO₂ — for photocatalytic remediation of pharmaceutical contaminants, while simultaneously investigating high-entropy perovskites for thermoelectric applications.</p>
+
+      <div class="highlight-box">
+        "Discovered two new configurational high entropy perovskites exhibiting superior thermoelectric properties."
+      </div>
+
+      <p>Alongside lab research, I build the tools that make materials science faster: CLI utilities for XRD analysis, band-gap estimation, pollutant kinetics — all open-source on GitHub. I'm also deeply interested in automated data-acquisition systems, IoT instrumentation, and AI-augmented workflows for scientific research.</p>
+
+      <div class="about-discoveries">
+        <div class="discovery-item"><span class="discovery-icon">🔬</span> Photocatalytic mitigation of diclofenac &amp; sulfamethoxazole</div>
+        <div class="discovery-item"><span class="discovery-icon">⚡</span> Automated DAQ systems for thermoelectric property measurements</div>
+        <div class="discovery-item"><span class="discovery-icon">🌱</span> Environmental remediation via sol-gel TiO₂/Fe₂O₃ nanocomposites</div>
+        <div class="discovery-item"><span class="discovery-icon">🖥️</span> Open-source XRD, band-gap & kinetics analysis tools</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title">Technical Skills</h2>
+  <p class="section-subtitle">From sol-gel synthesis to full-stack automation — a multidisciplinary toolkit built across a decade of research and engineering.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card fade-up">
+      <div class="skill-card-icon icon-green">🧪</div>
+      <div class="skill-card-title">Materials Science</div>
+      <p style="font-size:0.83rem;color:var(--ink2);line-height:1.6;">High-entropy materials, thermoelectric development, environmental remediation catalysts, advanced XRD & UV-Vis characterisation.</p>
+      <div class="skill-pills">
+        <span class="pill">TiO₂</span><span class="pill">Fe₂O₃</span><span class="pill">Perovskites</span><span class="pill">Sol-Gel</span><span class="pill">XRD</span><span class="pill">Tauc Plot</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-card-icon icon-blue">💻</div>
+      <div class="skill-card-title">Programming & Software</div>
+      <p style="font-size:0.83rem;color:var(--ink2);line-height:1.6;">Scientific computing, data analysis pipelines, desktop and web app development for instrument control and visualisation.</p>
+      <div class="skill-pills">
+        <span class="pill">Python</span><span class="pill">Java</span><span class="pill">C#</span><span class="pill">C++</span><span class="pill">SQL</span><span class="pill">TypeScript</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-card-icon icon-amber">⚗️</div>
+      <div class="skill-card-title">Scientific Computing</div>
+      <p style="font-size:0.83rem;color:var(--ink2);line-height:1.6;">Simulation, finite-element analysis, DFT, and advanced data processing for materials property extraction.</p>
+      <div class="skill-pills">
+        <span class="pill">MATLAB</span><span class="pill">Quantum Espresso</span><span class="pill">COMSOL</span><span class="pill">OriginPro</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-card-icon icon-coral">🤖</div>
+      <div class="skill-card-title">IoT & Automation</div>
+      <p style="font-size:0.83rem;color:var(--ink2);line-height:1.6;">Embedded systems for DAQ, sensor interfacing, automated experimental rigs, and AI-augmented data workflows.</p>
+      <div class="skill-pills">
+        <span class="pill">Arduino</span><span class="pill">ESP32</span><span class="pill">Raspberry Pi</span><span class="pill">ML/AI</span><span class="pill">LangChain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Open Source</div>
+  <h2 class="section-title">Projects</h2>
+  <p class="section-subtitle">Tools built for the materials science community — freely available, CLI-first, and designed to make characterisation faster.</p>
+
+  <div class="projects-grid">
+    <a class="project-card fade-up" href="https://github.com/raymsm/crysanalyze" target="_blank">
+      <div class="project-header">
+        <span class="project-title">crysanalyze</span>
+        <span class="project-lang">Python</span>
+      </div>
+      <p class="project-desc">CLI tool for rapid preliminary analysis of powder X-ray Diffraction (XRD) data — designed for quick initial screening of synthesised materials.</p>
+      <div class="project-footer">
+        <span class="star-count">★ 2</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/raymsm/bandgap_estimator" target="_blank">
+      <div class="project-header">
+        <span class="project-title">bandgap_estimator</span>
+        <span class="project-lang">Python</span>
+      </div>
+      <p class="project-desc">Estimate optical band gap energy from UV-Vis spectroscopy data using the Tauc plot method. Fast, scriptable, reproducible.</p>
+      <div class="project-footer">
+        <span class="star-count">★ 3</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/raymsm/hea-prop-predict" target="_blank">
+      <div class="project-header">
+        <span class="project-title">hea-prop-predict</span>
+        <span class="project-lang">Python</span>
+      </div>
+      <p class="project-desc">Rapid approximate estimates for density, lattice parameter, and thermal conductivity of High Entropy Alloys based on elemental composition.</p>
+      <div class="project-footer">
+        <span class="star-count">★ 2</span>
+        <span>1 fork</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/raymsm/pollutant-degradation-visualizer" target="_blank">
+      <div class="project-header">
+        <span class="project-title">pollutant-degradation-visualizer</span>
+        <span class="project-lang">Python</span>
+      </div>
+      <p class="project-desc">Streamlit app for fitting and visualising pseudo-first-order kinetic models in photocatalytic degradation studies with real-time plotting.</p>
+      <div class="project-footer">
+        <span class="star-count">★ 2</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/raymsm/xrdPhase" target="_blank">
+      <div class="project-header">
+        <span class="project-title">xrdPhase</span>
+        <span class="project-lang">TypeScript</span>
+      </div>
+      <p class="project-desc">Web-based application for automated phase identification from XRD data, offering a clean UI for researchers and material scientists.</p>
+      <div class="project-footer">
+        <span class="star-count">★ 2</span>
+      </div>
+    </a>
+
+    <a class="project-card fade-up" href="https://github.com/raymsm/xrdPlot" target="_blank">
+      <div class="project-header">
+        <span class="project-title">xrdPlot</span>
+        <span class="project-lang">TypeScript</span>
+      </div>
+      <p class="project-desc">Next.js + Tailwind web visualisation tool for XRD data — fast, interactive, and built for researchers who need publication-ready plots.</p>
+      <div class="project-footer">
+        <span class="star-count">★ 2</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" class="research-section">
+  <div class="section-label">Active Research</div>
+  <h2 class="section-title" style="color:#fff;">Current Focus Areas</h2>
+  <p class="section-subtitle">Doctoral work spanning environmental nanotechnology, high-entropy materials, and next-generation energy materials.</p>
+
+  <div class="research-grid">
+    <div class="research-card fade-up">
+      <div class="research-card-num">01</div>
+      <div class="research-card-title">Black Titania &amp; Photocatalysis</div>
+      <div class="research-card-body">Synthesising defect-engineered TiO₂ₓ with enhanced visible-light absorption for pharmaceutical contaminant remediation — targeting diclofenac and sulfamethoxazole via DST-SERB funded work.</div>
+      <span class="research-tag">DST-SERB Funded</span>
+    </div>
+
+    <div class="research-card fade-up">
+      <div class="research-card-num">02</div>
+      <div class="research-card-title">High Entropy Perovskites</div>
+      <div class="research-card-body">Exploring configurational entropy as a handle on thermoelectric performance. Discovered two novel perovskite compositions with superior Seebeck coefficients and low thermal conductivity.</div>
+      <span class="research-tag">Thermoelectrics</span>
+    </div>
+
+    <div class="research-card fade-up">
+      <div class="research-card-num">03</div>
+      <div class="research-card-title">3-ω Thermal Conductivity</div>
+      <div class="research-card-body">Building a complete SEED-grant funded 3-omega measurement platform using Raspberry Pi and custom DAQ — enabling in-house thin-film thermal characterisation for nanostructured materials.</div>
+      <span class="research-tag">SEED Grant</span>
+    </div>
+
+    <div class="research-card fade-up">
+      <div class="research-card-num">04</div>
+      <div class="research-card-title">AI-Augmented Lab Workflows</div>
+      <div class="research-card-body">Building privacy-preserving local RAG systems over scientific literature using Ollama, ChromaDB, and qwen2.5 — enabling semantic search across Obsidian research vaults.</div>
+      <span class="research-tag">AI + Science</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Let's Connect</h2>
+
+  <div class="contact-grid">
+    <div class="contact-links fade-up">
+      <a class="contact-link" href="mailto:ray94msm@gmail.com">
+        <div class="contact-link-icon">✉️</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">ray94msm@gmail.com</div>
+        </div>
+      </a>
+
+      <a class="contact-link" href="https://github.com/raymsm" target="_blank">
+        <div class="contact-link-icon">⌥</div>
+        <div>
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-value">github.com/raymsm</div>
+        </div>
+      </a>
+
+      <a class="contact-link" href="http://ray94msm.wordpress.com" target="_blank">
+        <div class="contact-link-icon">📝</div>
+        <div>
+          <div class="contact-link-label">Blog</div>
+          <div class="contact-link-value">ray94msm.wordpress.com</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="contact-note fade-up">
+      <div class="contact-note-title">Open to Collaboration</div>
+      <p class="contact-note-body">
+        I'm interested in collaborations at the intersection of materials characterisation, data science, and sustainable technology. Whether you're working on photocatalysis, thermoelectrics, environmental remediation, or building open tools for science — let's talk.
+      </p>
+      <br />
+      <p class="contact-note-body" style="font-family:var(--mono);font-size:0.8rem;color:var(--accent);">
+        Currently: PhD, Jadavpur University · AICTE Doctoral Fellow
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Mousom Roy</div>
+  <div>© 2025 · raysm.github.io · Made with precision</div>
+  <div style="font-family:var(--mono);font-size:0.72rem;">Materials Science & Code</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        const delay = (Array.from(e.target.parentElement?.children || []).indexOf(e.target)) * 80;
+        setTimeout(() => e.target.classList.add('visible'), delay);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
